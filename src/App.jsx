@@ -12,7 +12,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Index />} />
-      <Route path="/login" element={session ? <Navigate to="/" /> : <Login />} />
+        <Route path="/login" element={session ? <Navigate to="/" /> : <Login />} />
       </Routes>
     </Router>
   );

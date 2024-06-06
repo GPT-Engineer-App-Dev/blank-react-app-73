@@ -1,6 +1,6 @@
 import { Box, Flex, Link, Spacer, Text, Button } from "@chakra-ui/react";
-import { useSupabaseAuth } from "../integrations/supabase/auth.jsx";
 import { Link as RouterLink } from "react-router-dom";
+import { useSupabaseAuth } from "../integrations/supabase/auth.jsx";
 
 const Navbar = () => {
   const { session, logout } = useSupabaseAuth();
