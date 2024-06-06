@@ -3,7 +3,7 @@ import Index from "./pages/Index.jsx";
 import Navbar from "./components/Navbar.jsx";
 
 import Login from "./pages/Login.jsx";
-import { useSupabaseAuth } from "./integrations/supabase/auth.jsx";
+import { useSupabaseAuth, SupabaseAuthProvider } from "./integrations/supabase/auth.jsx";
 
 function App() {
   const { session } = useSupabaseAuth();
@@ -12,7 +12,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Index />} />
-        <Route path="/login" element={session ? <Navigate to="/" /> : <Login />} />
+        <Route path="/login" element={session ? <Navigate to="/" /> : <SupabaseAuthProvider><Login /></SupabaseAuthProvider>} />
       </Routes>
     </Router>
   );
