@@ -1,7 +1,10 @@
-import { Box, Flex, Link, Spacer, Text } from "@chakra-ui/react";
+import { Box, Flex, Link, Spacer, Text, Button } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
+import { useSupabaseAuth } from "../integrations/supabase/auth.jsx";
 
 const Navbar = () => {
+  const { session, logout } = useSupabaseAuth();
+
   return (
     <Box bg="brand.800" px={4} py={2}>
       <Flex align="center">
@@ -18,6 +21,15 @@ const Navbar = () => {
         <Link as={RouterLink} to="/contact" color="white" mx={2}>
           Contact
         </Link>
+      {session ? (
+          <Button onClick={logout} colorScheme="red" mx={2}>
+            Logout
+          </Button>
+        ) : (
+          <Link as={RouterLink} to="/login" color="white" mx={2}>
+            Login
+          </Link>
+        )}
       </Flex>
     </Box>
   );
